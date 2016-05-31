@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <GLFW/glfw3.h>
 
+#include "input.c"
+
 #define VERSION    "0.04"
 #define GAME_TITLE "Falcon Test"
 
@@ -10,17 +12,12 @@
 int width, height;
 float ratio;
 
-void exitGame(GLFWwindow *win) {
+GLFWwindow *win;
+
+void exitGame() {
     glfwDestroyWindow(win);
     glfwTerminate();
     exit(0);
-}
-
-void key_callback(GLFWwindow *win, int key, int scancode, int action, int mods) {
-    printf("Key Pressed, keycode: %d\n", key);
-    fflush(stdout);
-    if (key == 81)
-        exitGame(win);
 }
 
 void draw3D() {
@@ -44,7 +41,7 @@ void draw3D() {
     glEnd();
 }
 
-void gameloop(GLFWwindow *win) {
+void gameloop() {
     draw3D();
     glfwSwapBuffers(win);
     glfwPollEvents();
@@ -67,7 +64,7 @@ int main(int argc, char *argv[]) {
         return -1;
     }
     const GLFWvidmode *mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-    GLFWwindow *win = glfwCreateWindow((*mode).width, (*mode).height, GAME_TITLE, glfwGetPrimaryMonitor(), NULL);
+    win = glfwCreateWindow((*mode).width, (*mode).height, GAME_TITLE, glfwGetPrimaryMonitor(), NULL);
     if (win == NULL)
         return -1;
     glfwMakeContextCurrent(win);
@@ -77,7 +74,7 @@ int main(int argc, char *argv[]) {
     glViewport(0, 0, width, height);
     ratio = (float)width / (float)height;
     while(!glfwWindowShouldClose(win))
-        gameloop(win);
-    exitGame(win);
+        gameloop();
+    exitGame();
     return 0;
 }
