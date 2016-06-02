@@ -1,9 +1,12 @@
 GLFWwindow *win;
 
+int paused;
 void draw3D();
 
 void gameloop() {
-    draw3D();
-    glfwSwapBuffers(win);
+    if (!paused) {
+        draw3D();
+        glfwSwapBuffers(win);
+    }
     glfwPollEvents();
 }

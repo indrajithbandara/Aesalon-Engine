@@ -12,6 +12,7 @@
 
 /* Globals */
 
+int paused = 0;
 int width, height;
 float ratio;
 
