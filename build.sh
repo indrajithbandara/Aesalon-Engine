@@ -1,3 +1,5 @@
+echo "Building Debug Version..."
+clang -ggdb -ansi -pedantic-errors -Weverything -lglfw -lGL game.c -o ./debug/game
 echo "Building..."
-clang -ggdb -ansi -Wall -Werror -O2 -lglfw -lGL game.c -o game
+clang -O3 -lglfw -lGL game.c -o ./build/game
 echo "Done"

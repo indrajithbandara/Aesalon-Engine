@@ -1,49 +1,57 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 #include <GLFW/glfw3.h>
 
-#include "confloader.c"
+#include "globals.h"
+
 #include "input.c"
-#include "gameloop.c"
-#include "render.c"
+#include "renderloop.c"
 
-#define VERSION    "0.04"
-#define GAME_TITLE "Falcon Test"
-
-/* Globals */
-
-int paused = 0;
-int width, height;
-float ratio;
-
-GLFWwindow *win;
-
-void exitGame() {
+void exitGame(void) {
+    extern GLFWwindow *win;
     glfwDestroyWindow(win);
     glfwTerminate();
     exit(0);
 }
 
 int main(int argc, char *argv[]) {
+    extern int width, height, paused;
+    extern GLFWwindow *win;
+    const GLFWvidmode *mode;
     printf("Falcon Game Engine %s\n", VERSION);
-    if (readConf())
-        puts("Failed to read conf file, using defaults");
-    if (!glfwInit()) {
-        puts("GLFW Init Failed, Exiting");
+
+    if (!glfwInit())
         return -1;
+
+    mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+    width  = (*mode).width;
+    height = (*mode).height;
+
+    if (argv[1] != NULL && !strcmp(argv[1], "--windowed") && argv[2] != NULL && argv[3] != NULL) {
+        width  = atoi(argv[2]);
+        height = atoi(argv[3]);
+        printf("Using User Defined Resolution: %dx%d\n", width, height);
     }
-    const GLFWvidmode *mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-    win = glfwCreateWindow((*mode).width, (*mode).height, GAME_TITLE, glfwGetPrimaryMonitor(), NULL);
+
+    win = glfwCreateWindow(width, height, GAME_TITLE, glfwGetPrimaryMonitor(), NULL);
+
     if (win == NULL)
         return -1;
+
     glfwMakeContextCurrent(win);
     glfwSwapInterval(1);
     glfwSetKeyCallback(win, key_callback);
     glfwGetFramebufferSize(win, &width, &height);
+
     glViewport(0, 0, width, height);
     ratio = (float)width / (float)height;
-    while(!glfwWindowShouldClose(win))
-        gameloop();
+
+    /* buildShaders(); */
+
+    gameloop();
+
     exitGame();
     return 0;
 }
