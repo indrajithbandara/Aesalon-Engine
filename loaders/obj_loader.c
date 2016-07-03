@@ -8,7 +8,7 @@ static obj model;
 
 int parse_buffer(char *buffer) {
     extern obj model;
-    if (buffer[0] != '#' && strlen(buffer) != 0) {
+    if (buffer[0] != '#' && buffer[0] != '\n' && strlen(buffer) != 0) {
         if (buffer[0] == 'o' && buffer[1] == ' ') {
             char *name;
             strtok(buffer, " ");
@@ -32,25 +32,28 @@ int parse_buffer(char *buffer) {
             norm.z = (float)atof(strtok(NULL, " "));
             model.norms = realloc(model.norms, ++model.normc * sizeof(vec4));
             model.norms[model.normc - 1] = norm;
+        } else if (buffer[0] == 'v' && buffer[1] == 't' && buffer[2] == ' ') {
+            vec4 text;
+            strtok(buffer, " ");
+            text.x = (float)atof(strtok(NULL, " "));
+            text.y = (float)atof(strtok(NULL, " "));
+            model.texts = realloc(model.texts, ++model.textc * sizeof(vec4));
+            model.texts[model.textc - 1] = text;
         } else if (buffer[0] == 'f' && buffer[1] == ' ') {
             face f;
             vec4 v;
             f.verts = NULL;
             f.vertc = 0;
-            char *verts[4];
             char *token;
-            int i = 0;
+            int j, i = 0;
             strtok(buffer, " ");
-            for (; i < 4; i++)
-                if ((token = (strtok(NULL, " "))))
-                    verts[i] = token;
-            for (i = 0; i < 4; i++) {
-                token = strdup(verts[i]);
+            while ((token = (strtok(NULL, " ")))) {
+                char *token2 = strdup(token);
                 v.x = (float)atof(strtok(token, "/"));
-                if (strstr(verts[i], "//"))
+                if (strstr(token2, "//"))
                     v.z = (float)atof(strtok(NULL, "/"));
                 else {
-                    v.x = (float)atof(strtok(NULL, "/"));
+                    v.y = (float)atof(strtok(NULL, "/"));
                     v.z = (float)atof(strtok(NULL, "\0"));
                 }
                 f.verts = realloc(f.verts, ++f.vertc * sizeof(vec4));
@@ -68,7 +71,7 @@ int parse_buffer(char *buffer) {
 obj load_model(char *name) {
     extern obj model;
     model.name = "";
-    model.verts = model.norms = NULL;
+    model.verts = model.norms = model.texts = NULL;
     model.faces = NULL;
     char *buffer = malloc(MAX_LINE_LEN + 1);
     FILE *file = fopen(name, "r");

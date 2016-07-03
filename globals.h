@@ -5,7 +5,7 @@
 
 static int width, height, a, paused;
 static float ratio;
-//static GLFWwindow *win;
+static GLFWwindow *win;
 
 typedef struct {
     float x, y, z, w;
@@ -18,7 +18,7 @@ typedef struct {
 
 typedef struct {
     char *name;
-    int vertc, normc, facec;
-    vec4 *verts, *norms;
+    int facec, normc, textc, vertc;
     face *faces;
+    vec4 *norms, *texts, *verts;
 } obj;
