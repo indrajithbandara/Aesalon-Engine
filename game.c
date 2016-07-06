@@ -8,6 +8,7 @@
 
 #include "input.c"
 #include "renderloop.c"
+#include "logger.c"
 
 void exitGame(void) {
     extern GLFWwindow *win;
@@ -21,9 +22,14 @@ int main(int argc, char *argv[]) {
     extern GLFWwindow *win;
     const GLFWvidmode *mode;
     printf("Falcon Game Engine %s\n", VERSION);
+    flcn_clear_log();
+    flcn_log("This is a Test");
 
     if (!glfwInit())
         return -1;
+    
+    if(FLCN_AA)
+        glfwWindowHint(GLFW_SAMPLES, FLCN_GLFW_SAMPLES);
 
     mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
     width  = (*mode).width;
@@ -46,6 +52,10 @@ int main(int argc, char *argv[]) {
     glfwGetFramebufferSize(win, &width, &height);
 
     glViewport(0, 0, width, height);
+
+    if (FLCN_AA)
+        glEnable(GL_MULTISAMPLE);
+    
     ratio = (float)width / (float)height;
 
     /* buildShaders(); */

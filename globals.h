@@ -1,7 +1,10 @@
 #define VERSION    "0.06"
 #define GAME_TITLE "Falcon Engine Test"
 
-#define MAX_LINE_LEN 509
+#define FLCN_MAX_LINE_LEN 509
+#define FLCN_GLFW_SAMPLES 4
+#define FLCN_AA           1
+
 
 static int width, height, a, paused;
 static float ratio;
