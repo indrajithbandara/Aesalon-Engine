@@ -3,14 +3,14 @@
 void draw3D(void);
 
 void gameloop() {
-    extern float ratio;
-    extern int paused, a;
-    extern GLFWwindow *win;
+    extern int FLCN_PAUSED, FLCN_WIDTH, FLCN_HEIGHT;
+    extern GLFWwindow *FLCN_WINDOW;
+    float ratio = FLCN_WIDTH / FLCN_HEIGHT;
+    int a = 0;
+    FLCN_PAUSED = 0;
 
-    paused = a = 0;
-
-    while (!glfwWindowShouldClose(win)) {
-        if (!paused) {
+    while (!glfwWindowShouldClose(FLCN_WINDOW)) {
+        if (!FLCN_PAUSED) {
             /* Copypasta example code, to be replaced */
             glClear(GL_COLOR_BUFFER_BIT);
             glMatrixMode(GL_PROJECTION);
@@ -19,14 +19,14 @@ void gameloop() {
             glOrtho((GLdouble)-ratio, (GLdouble)ratio, (GLdouble)-1.f, (GLdouble)1.f, (GLdouble)1.f, (GLdouble)-1.f);
             glMatrixMode(GL_MODELVIEW);
             glLoadIdentity();
-            glRotatef(a++, 0.f, 0.f, 1.f);
+            glRotatef(a++, 1.f, 1.f, 1.f);
             glBegin(GL_TRIANGLES);
             glColor3f(0.764f, 0.2f, 0.2f);
             glVertex3f(-0.6f, -0.4f, 0.f);
             glVertex3f(0.6f, -0.4f, 0.f);
             glVertex3f(0.f, 0.6f, 0.f);
             glEnd();
-            glfwSwapBuffers(win);
+            glfwSwapBuffers(FLCN_WINDOW);
         }
         glfwPollEvents();
     }
