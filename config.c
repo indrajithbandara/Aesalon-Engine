@@ -3,7 +3,11 @@
 #include <string.h>
 
 static int parse_buffer(char *buffer) {
-    extern int FLCN_AA, FLCN_GLFW_SAMPLES, FLCN_MAX_LINE_LEN;
+    extern int FLCN_AA,
+               FLCN_GLFW_SAMPLES,
+               FLCN_MAX_LINE_LEN,
+               FLCN_WIN_WIDTH,
+               FLCN_HEIGHT;
     char *token;
     if (buffer && strlen(buffer) != 0 && buffer[0] == 'F') {
         token = strtok(buffer, " ");
@@ -14,6 +18,10 @@ static int parse_buffer(char *buffer) {
                 FLCN_GLFW_SAMPLES = atoi(strtok(NULL, "="));
             else if (!strcmp(token, "FLCN_MAX_LINE_LEN"))
                 FLCN_MAX_LINE_LEN = atoi(strtok(NULL, "="));
+            else if (!strcmp(token, "FLCN_WIN_WIDTH"))
+                FLCN_WIN_WIDTH = atoi(strtok(NULL, "="));
+            else if (!strcmp(token, "FLCN_WIN_HEIGHT"))
+                FLCN_WIN_HEIGHT = atoi(strtok(NULL, "="));
         }
     }
     return 0;

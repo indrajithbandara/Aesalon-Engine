@@ -6,9 +6,9 @@
 
 static obj model;
 
-int parse_buffer(char *buffer) {
+static int parse_buffer(char *buffer) {
     extern obj model;
-    if (buffer[0] != '#' && buffer[0] != '\n' && strlen(buffer) != 0) {
+    if (buffer && buffer[0] != '#' && buffer[0] != '\n' && strlen(buffer) != 0) {
         if (buffer[0] == 'o' && buffer[1] == ' ') {
             char *name;
             strtok(buffer, " ");
@@ -68,7 +68,7 @@ int parse_buffer(char *buffer) {
     return 0;
 }
 
-obj load_model(char *name) {
+obj flcn_load_obj(char *name) {
     extern obj model;
     model.name = "";
     model.verts = model.norms = model.texts = NULL;
@@ -77,7 +77,7 @@ obj load_model(char *name) {
     FILE *file = fopen(name, "r");
     int i, c;
     i = c = 0;
-    if (file != NULL) {
+    if (file) {
         while (c != EOF) {
             while ((c = fgetc(file)) != '\n' && c != EOF)
                 buffer[i++] = c;

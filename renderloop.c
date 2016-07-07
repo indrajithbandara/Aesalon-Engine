@@ -3,9 +3,9 @@
 void draw3D(void);
 
 void gameloop() {
-    extern int FLCN_PAUSED, FLCN_WIDTH, FLCN_HEIGHT;
+    extern int FLCN_PAUSED, FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT;
     extern GLFWwindow *FLCN_WINDOW;
-    float ratio = FLCN_WIDTH / FLCN_HEIGHT;
+    float ratio = FLCN_WIN_WIDTH / FLCN_WIN_HEIGHT;
     int a = 0;
     FLCN_PAUSED = 0;
 

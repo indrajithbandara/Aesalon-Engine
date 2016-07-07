@@ -5,8 +5,8 @@ static GLFWwindow *FLCN_WINDOW;
 static int FLCN_MAX_LINE_LEN,
            FLCN_GLFW_SAMPLES,
            FLCN_AA,
-           FLCN_WIDTH,
-           FLCN_HEIGHT,
+           FLCN_WIN_WIDTH,
+           FLCN_WIN_HEIGHT,
            FLCN_PAUSED;
 
 typedef struct {

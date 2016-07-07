@@ -34,22 +34,28 @@ int main(int argc, char *argv[]) {
     if(FLCN_AA)
         glfwWindowHint(GLFW_SAMPLES, FLCN_GLFW_SAMPLES);
 
-    mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-    FLCN_WIDTH  = (*mode).width;
-    FLCN_HEIGHT = (*mode).height;
+    if (!FLCN_WIN_WIDTH || !FLCN_WIN_HEIGHT) {
+        mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+        FLCN_WIN_WIDTH  = (*mode).width;
+        FLCN_WIN_HEIGHT = (*mode).height;
+    }
 
-    FLCN_WINDOW = glfwCreateWindow(FLCN_WIDTH, FLCN_HEIGHT, GAME_TITLE,
+    FLCN_WINDOW = glfwCreateWindow(FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT, GAME_TITLE,
                                    glfwGetPrimaryMonitor(), NULL);
 
     if (FLCN_WINDOW == NULL)
         return -1;
 
+    printf("Using Resolution: %d x %d\n", FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT);
+
     glfwMakeContextCurrent(FLCN_WINDOW);
     glfwSwapInterval(1);
     glfwSetKeyCallback(FLCN_WINDOW, key_callback);
-    glfwGetFramebufferSize(FLCN_WINDOW, &FLCN_WIDTH, &FLCN_HEIGHT);
 
-    glViewport(0, 0, FLCN_WIDTH, FLCN_HEIGHT);
+
+    glfwGetFramebufferSize(FLCN_WINDOW, &FLCN_WIN_WIDTH, &FLCN_WIN_HEIGHT);
+
+    glViewport(0, 0, FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT);
 
     if (FLCN_AA)
         glEnable(GL_MULTISAMPLE);
