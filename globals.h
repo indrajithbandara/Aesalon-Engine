@@ -1,4 +1,4 @@
-#define VERSION    "0.06"
+#define VERSION    "0.07"
 #define GAME_TITLE "Falcon Engine Test"
 
 static GLFWwindow *FLCN_WINDOW;
@@ -7,7 +7,8 @@ static int FLCN_MAX_LINE_LEN,
            FLCN_AA,
            FLCN_WIN_WIDTH,
            FLCN_WIN_HEIGHT,
-           FLCN_PAUSED;
+           FLCN_PAUSED,
+           FLCN_DEBUG;
 
 typedef struct {
     float x, y, z, w;

@@ -7,7 +7,8 @@ static int parse_buffer(char *buffer) {
                FLCN_GLFW_SAMPLES,
                FLCN_MAX_LINE_LEN,
                FLCN_WIN_WIDTH,
-               FLCN_HEIGHT;
+               FLCN_WIN_HEIGHT,
+               FLCN_DEBUG;
     char *token;
     if (buffer && strlen(buffer) != 0 && buffer[0] == 'F') {
         token = strtok(buffer, " ");
@@ -22,6 +23,8 @@ static int parse_buffer(char *buffer) {
                 FLCN_WIN_WIDTH = atoi(strtok(NULL, "="));
             else if (!strcmp(token, "FLCN_WIN_HEIGHT"))
                 FLCN_WIN_HEIGHT = atoi(strtok(NULL, "="));
+            else if (!strcmp(token, "FLCN_DEBUG"))
+                FLCN_DEBUG = atoi(strtok(NULL, "="));
         }
     }
     return 0;

@@ -19,17 +19,22 @@ void exitGame(void) {
 }
 
 int main(int argc, char *argv[]) {
-    extern int FLCN_WIDTH, FLCN_HEIGHT, FLCN_PAUSED;
+    extern int FLCN_WIDTH, FLCN_HEIGHT, FLCN_DEBUG, FLCN_PAUSED;
     extern GLFWwindow *FLCN_WINDOW;
     const GLFWvidmode *mode;
     printf("Falcon Game Engine %s\n", VERSION);
-    flcn_clear_log();
-    flcn_log("This is a Test");
 
     if (!glfwInit())
         return -1;
 
+    puts("Reading Config...");
     flcn_load_config();
+
+    flcn_clear_log();
+    flcn_log("This is a Test");
+
+    if (FLCN_DEBUG)
+        puts("***DEBUGGING IS ENABLED***");
 
     if(FLCN_AA)
         glfwWindowHint(GLFW_SAMPLES, FLCN_GLFW_SAMPLES);
