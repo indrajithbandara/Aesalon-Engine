@@ -33,7 +33,7 @@ static int parse_buffer(char *buffer) {
 int flcn_load_config() {
     int c, i;
     char *buffer = malloc(100);
-    FILE *config = fopen("falcon.conf", "r");
+    FILE *config = fopen("falcon.cfg", "r");
     c = i = 0;
     if (config) {
         while (c != EOF) {

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Falcon Game Engine
+Comment=The Falcon Game Engine
+Exec=falcon
+Icon=falcon.png
+Terminal=false

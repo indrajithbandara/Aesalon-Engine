@@ -7,7 +7,7 @@
 #include "globals.h"
 
 #include "input.c"
-#include "renderloop.c"
+#include "renderer.c"
 #include "logger.c"
 #include "config.c"
 
@@ -19,7 +19,7 @@ void exitGame(void) {
 }
 
 int main(int argc, char *argv[]) {
-    extern int FLCN_WIDTH, FLCN_HEIGHT, FLCN_DEBUG, FLCN_PAUSED;
+    extern int FLCN_WIDTH, FLCN_HEIGHT, FLCN_DEBUG, FLCN_PAUSED, FLCN_AA;
     extern GLFWwindow *FLCN_WINDOW;
     const GLFWvidmode *mode;
     printf("Falcon Game Engine %s\n", VERSION);
@@ -60,14 +60,13 @@ int main(int argc, char *argv[]) {
 
     glfwGetFramebufferSize(FLCN_WINDOW, &FLCN_WIN_WIDTH, &FLCN_WIN_HEIGHT);
 
-    glViewport(0, 0, FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT);
+    flcn_init_gl();
 
-    if (FLCN_AA)
-        glEnable(GL_MULTISAMPLE);
-
-    /* buildShaders(); */
-
-    gameloop();
+    while (!glfwWindowShouldClose(FLCN_WINDOW)) {
+        if (!FLCN_PAUSED)
+            flcn_render();
+        glfwPollEvents();
+    }
 
     exitGame();
     return 0;
