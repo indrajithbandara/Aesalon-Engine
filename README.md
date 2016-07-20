@@ -1,6 +1,10 @@
 # Falcon Engine
 The Falcon Game Engine project.
 
+INSTALLING:
+Run build.sh to compile the project.
+Then run install.sh to install it.
+
 Dependencies:
 Falcon currently depends on OpenGL and GLFW.
 

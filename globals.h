@@ -1,4 +1,4 @@
-#define VERSION    "0.07"
+#define VERSION    "0.08"
 #define GAME_TITLE "Falcon Engine Test"
 
 static GLFWwindow *FLCN_WINDOW;

@@ -4,5 +4,6 @@ Encoding=UTF-8
 Name=Falcon Game Engine
 Comment=The Falcon Game Engine
 Exec=falcon
-Icon=falcon.png
+Icon=falcon
 Terminal=false
+Categories=Game;
