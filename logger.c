@@ -1,7 +1,11 @@
 #include <stdio.h>
 
+int flcn_log(char *line);
+int flcn_clear_log(void);
+
 int flcn_log(char *line) {
     FILE *log = fopen("flcn.log", "a");
+    fputs(line, stderr);
     if (log) {
         fputs(line, log);
         fclose(log);

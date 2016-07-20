@@ -2,19 +2,28 @@
 
 static int a = 0;
 
+int  flcn_build_shaders(void);
+int  flcn_init_gl(void);
+void flcn_render(void);
+
+int flcn_build_shaders() {
+    return 0;
+}
+
 int flcn_init_gl() {
-    extern int FLCN_AA;
+    extern int FLCN_AA, FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT;
     glViewport(0, 0, FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT);
 
     if (FLCN_AA)
         glEnable(GL_MULTISAMPLE);
 
     /* buildShaders(); */
+    return 0;
 }
 
-int flcn_render(void) {
-    extern int FLCN_PAUSED, FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT;
+void flcn_render(void) {
     extern GLFWwindow *FLCN_WINDOW;
+    extern int FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT;
     float ratio = FLCN_WIN_WIDTH / FLCN_WIN_HEIGHT;
     /* Copypasta example code, to be replaced */
     glClear(GL_COLOR_BUFFER_BIT);

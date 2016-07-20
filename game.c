@@ -12,15 +12,12 @@
 #include "config.c"
 
 void exitGame(void) {
-    extern GLFWwindow *FLCN_WINDOW;
     glfwDestroyWindow(FLCN_WINDOW);
     glfwTerminate();
     exit(0);
 }
 
 int main(int argc, char *argv[]) {
-    extern int FLCN_WIDTH, FLCN_HEIGHT, FLCN_DEBUG, FLCN_PAUSED, FLCN_AA;
-    extern GLFWwindow *FLCN_WINDOW;
     const GLFWvidmode *mode;
     printf("Falcon Game Engine %s\n", VERSION);
 
@@ -29,12 +26,6 @@ int main(int argc, char *argv[]) {
 
     puts("Reading Config...");
     flcn_load_config();
-
-    flcn_clear_log();
-    flcn_log("This is a Test");
-
-    if (FLCN_DEBUG)
-        puts("***DEBUGGING IS ENABLED***");
 
     if(FLCN_AA)
         glfwWindowHint(GLFW_SAMPLES, FLCN_GLFW_SAMPLES);
@@ -51,10 +42,12 @@ int main(int argc, char *argv[]) {
     if (FLCN_WINDOW == NULL)
         return -1;
 
-    printf("Using Resolution: %d x %d\n", FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT);
+printf("\nDebugging:\t%d\nAnti-Aliasing:\t%d\nV-Sync:\t\t%d\nResolution:\t%d x %d\n", FLCN_DEBUG, FLCN_AA, FLCN_VSYNC, FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT);
+
+    flcn_clear_log();
 
     glfwMakeContextCurrent(FLCN_WINDOW);
-    glfwSwapInterval(1);
+    glfwSwapInterval(FLCN_VSYNC);
     glfwSetKeyCallback(FLCN_WINDOW, key_callback);
 
 
