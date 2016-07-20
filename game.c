@@ -6,10 +6,11 @@
 
 #include "globals.h"
 
-#include "input.c"
-#include "renderer.c"
+#include "input/handler.c"
+#include "gfx/gl_init.c"
+#include "gfx/renderer.c"
 #include "logger.c"
-#include "config.c"
+#include "loaders/cfg_loader.c"
 
 void exitGame(void) {
     glfwDestroyWindow(FLCN_WINDOW);
@@ -42,7 +43,7 @@ int main(int argc, char *argv[]) {
     if (FLCN_WINDOW == NULL)
         return -1;
 
-printf("\nDebugging:\t%d\nAnti-Aliasing:\t%d\nV-Sync:\t\t%d\nResolution:\t%d x %d\n", FLCN_DEBUG, FLCN_AA, FLCN_VSYNC, FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT);
+    printf("\nDebugging:\t%d\nAnti-Aliasing:\t%d\nV-Sync:\t\t%d\nResolution:\t%d x %d\n", FLCN_DEBUG, FLCN_AA, FLCN_VSYNC, FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT);
 
     flcn_clear_log();
 
