@@ -1,13 +1,13 @@
-int flcn_init_gl(void);
+int asln_init_gl(void);
 static int build_shaders(void);
 
 int flcn_init_gl(void) {
-    extern int FLCN_AA, FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT;
-    glViewport(0, 0, FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT);
+    extern int ASLN_AA, ASLN_WIN_WIDTH, ASLN_WIN_HEIGHT;
+    glViewport(0, 0, ASLN_WIN_WIDTH, ASLN_WIN_HEIGHT);
 
     /*glEnable(GL_DEPTH_TEST);*/
 
-    if (FLCN_AA)
+    if (ASLN_AA)
         glEnable(GL_MULTISAMPLE);
 
     /* build_shaders(); */

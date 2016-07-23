@@ -2,13 +2,13 @@
 
 if [ -f build/game ]; then
     echo "Copying Executable to /usr/games/bin..."
-    sudo cp ./build/game /usr/games/bin/falcon
+    sudo cp ./build/game /usr/games/bin/aesalon
     echo "Copying Config..."
-    cp ./falcon.cfg ~/falcon.cfg
+    cp ./aesalon.cfg ~/falcon.cfg
     echo "Installing .desktop File..."
-    sudo cp ./falcon.desktop /usr/share/applications/falcon.desktop
+    sudo cp ./Aesalon.desktop /usr/share/applications/Aesalon.desktop
     echo "Copying Icons..."
-    sudo cp ./icons/256x256/apps/falcon.png /usr/share/pixmaps
+    sudo cp ./icons/256x256/apps/aesalon.png /usr/share/pixmaps
     echo "Falcon has been Successfully Installed"
 else
     echo "Project not built, building..."

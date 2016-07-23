@@ -1,5 +1,5 @@
-# Falcon Engine
-Welcome to the Falcon Game Engine project, an effort to build a lightweight, fast and powerful 3D game engine in C using the GLFW library & the Sandford C Library.
+# Aesalon Engine
+Welcome to the Aesalon (formerly Falcon) Game Engine project, an effort to build a lightweight, fast and powerful 3D game engine in C using the GLFW library & the Sandford C Library.
 
 Dependencies
 ============
@@ -29,11 +29,11 @@ Run install.sh to install the project on your system.
 **Windows**
 Install MinGW and run install.bat to install the project on your system.
 
-**Please Note: **
+**Please Note:**
 To actually be able to play a game you will need the game assets. These are not
 included here in order to make the download smaller for people who only want the
 engine code itself. In order to be able to play anything please download the
-Falcon-Assets repo and place its contents into the 'res' folder in this
+Aesalon-Assets repo and place its contents into the 'res' folder in this
 directory. These assets are loaded by the engine from the folder, there is no
 need to rebuild the project if you put them in the folder after building.
 

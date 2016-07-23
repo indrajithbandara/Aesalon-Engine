@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Aesalon Game Engine
+Comment=The Aesalon Game Engine
+Exec=aesalon
+Icon=aesalon
+Terminal=false
+Categories=Game;

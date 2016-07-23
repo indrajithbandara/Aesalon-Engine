@@ -1,5 +1,5 @@
 #define VERSION    "0.08"
-#define GAME_TITLE "Falcon Engine Test"
+#define GAME_TITLE "Aesalon Engine Test"
 
 #define RED     "\x1b[31m"
 #define GREEN   "\x1b[32m"
@@ -10,14 +10,14 @@
 #define RESET   "\x1b[0m"
 
 static GLFWwindow *FLCN_WINDOW;
-static int FLCN_MAX_LINE_LEN,
-           FLCN_GLFW_SAMPLES,
-           FLCN_AA,
-           FLCN_VSYNC,
-           FLCN_WIN_WIDTH,
-           FLCN_WIN_HEIGHT,
-           FLCN_PAUSED,
-           FLCN_DEBUG;
+static int ASLN_MAX_LINE_LEN,
+           ASLN_GLFW_SAMPLES,
+           ASLN_AA,
+           ASLN_VSYNC,
+           ASLN_WIN_WIDTH,
+           ASLN_WIN_HEIGHT,
+           ASLN_PAUSED,
+           ASLN_DEBUG;
 
 typedef struct {
     float x, y, z, w;

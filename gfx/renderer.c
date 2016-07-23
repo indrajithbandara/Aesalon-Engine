@@ -1,12 +1,12 @@
 #include <GLFW/glfw3.h>
 
 static int a = 0;
-void flcn_render(void);
+void asln_render(void);
 
-void flcn_render(void) {
+void asln_render(void) {
     extern GLFWwindow *FLCN_WINDOW;
-    extern int FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT;
-    float ratio = FLCN_WIN_WIDTH / FLCN_WIN_HEIGHT;
+    extern int ASLN_WIN_WIDTH, ASLN_WIN_HEIGHT;
+    float ratio = ASLN_WIN_WIDTH / ASLN_WIN_HEIGHT;
     /* Copypasta example code, to be replaced */
     glClear(GL_COLOR_BUFFER_BIT);
     glMatrixMode(GL_PROJECTION);
@@ -22,5 +22,5 @@ void flcn_render(void) {
     glVertex3f(0.6f, -0.4f, 0.f);
     glVertex3f(0.f, 0.6f, 0.f);
     glEnd();
-    glfwSwapBuffers(FLCN_WINDOW);
+    glfwSwapBuffers(ASLN_WINDOW);
 }

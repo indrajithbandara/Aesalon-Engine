@@ -13,51 +13,51 @@
 #include "loaders/cfg_loader.c"
 
 void exitGame(void) {
-    glfwDestroyWindow(FLCN_WINDOW);
+    glfwDestroyWindow(ASLN_WINDOW);
     glfwTerminate();
     exit(0);
 }
 
 int main(int argc, char *argv[]) {
     const GLFWvidmode *mode;
-    printf("%sFalcon Game Engine %s%s\n", RED, VERSION, RESET);
+    printf("%sAesalon Game Engine %s%s\n", RED, VERSION, RESET);
 
     if (!glfwInit())
         return -1;
 
     puts("Reading Config...");
-    flcn_load_config();
+    asln_load_config();
 
-    if(FLCN_AA)
-        glfwWindowHint(GLFW_SAMPLES, FLCN_GLFW_SAMPLES);
+    if(ASLN_AA)
+        glfwWindowHint(GLFW_SAMPLES, ASLN_GLFW_SAMPLES);
 
-    if (!FLCN_WIN_WIDTH || !FLCN_WIN_HEIGHT) {
+    if (!ASLN_WIN_WIDTH || !ASLN_WIN_HEIGHT) {
         mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-        FLCN_WIN_WIDTH  = (*mode).width;
-        FLCN_WIN_HEIGHT = (*mode).height;
+        ASLN_WIN_WIDTH  = (*mode).width;
+        ASLN_WIN_HEIGHT = (*mode).height;
     }
 
-    FLCN_WINDOW = glfwCreateWindow(FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT, GAME_TITLE,
+    ASLN_WINDOW = glfwCreateWindow(ASLN_WIN_WIDTH, ASLN_WIN_HEIGHT, GAME_TITLE,
                                    glfwGetPrimaryMonitor(), NULL);
 
-    if (FLCN_WINDOW == NULL)
+    if (ASLN_WINDOW == NULL)
         return -1;
 
     printf("\n | Debugging:\t\t%d\n | Anti-Aliasing:\t%d\n | V-Sync:\t\t%d\n | Resolution:\t\t%d x %d\n", FLCN_DEBUG, FLCN_AA, FLCN_VSYNC, FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT);
 
-    flcn_clear_log();
+    asln_clear_log();
 
-    glfwMakeContextCurrent(FLCN_WINDOW);
-    glfwSwapInterval(FLCN_VSYNC);
-    glfwSetKeyCallback(FLCN_WINDOW, key_callback);
+    glfwMakeContextCurrent(ASLN_WINDOW);
+    glfwSwapInterval(ASLN_VSYNC);
+    glfwSetKeyCallback(ASLN_WINDOW, key_callback);
 
 
-    glfwGetFramebufferSize(FLCN_WINDOW, &FLCN_WIN_WIDTH, &FLCN_WIN_HEIGHT);
+    glfwGetFramebufferSize(ASLN_WINDOW, &ASLN_WIN_WIDTH, &ASLN_WIN_HEIGHT);
 
-    flcn_init_gl();
+    asln_init_gl();
 
-    while (!glfwWindowShouldClose(FLCN_WINDOW)) {
-        if (!FLCN_PAUSED)
+    while (!glfwWindowShouldClose(ASLN_WINDOW)) {
+        if (!ASLN_PAUSED)
             flcn_render();
         glfwPollEvents();
     }
