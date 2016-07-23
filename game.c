@@ -20,7 +20,7 @@ void exitGame(void) {
 
 int main(int argc, char *argv[]) {
     const GLFWvidmode *mode;
-    printf("Falcon Game Engine %s\n", VERSION);
+    printf("%sFalcon Game Engine %s%s\n", RED, VERSION, RESET);
 
     if (!glfwInit())
         return -1;
@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
     if (FLCN_WINDOW == NULL)
         return -1;
 
-    printf("\nDebugging:\t%d\nAnti-Aliasing:\t%d\nV-Sync:\t\t%d\nResolution:\t%d x %d\n", FLCN_DEBUG, FLCN_AA, FLCN_VSYNC, FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT);
+    printf("\n | Debugging:\t\t%d\n | Anti-Aliasing:\t%d\n | V-Sync:\t\t%d\n | Resolution:\t\t%d x %d\n", FLCN_DEBUG, FLCN_AA, FLCN_VSYNC, FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT);
 
     flcn_clear_log();
 
