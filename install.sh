@@ -9,7 +9,7 @@ if [ -f build/game ]; then
     sudo cp ./Aesalon.desktop /usr/share/applications/Aesalon.desktop
     echo "Copying Icons..."
     sudo cp ./icons/256x256/apps/aesalon.png /usr/share/pixmaps
-    echo "Falcon has been Successfully Installed"
+    echo "Aesalon has been Successfully Installed"
 else
     echo "Project not built, building..."
     ./build.sh

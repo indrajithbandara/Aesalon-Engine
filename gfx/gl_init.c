@@ -1,7 +1,7 @@
 int asln_init_gl(void);
 static int build_shaders(void);
 
-int flcn_init_gl(void) {
+int asln_init_gl(void) {
     extern int ASLN_AA, ASLN_WIN_WIDTH, ASLN_WIN_HEIGHT;
     glViewport(0, 0, ASLN_WIN_WIDTH, ASLN_WIN_HEIGHT);
 

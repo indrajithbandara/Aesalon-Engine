@@ -1,4 +1,4 @@
-#define VERSION    "0.08"
+#define VERSION    "0.09"
 #define GAME_TITLE "Aesalon Engine Test"
 
 #define RED     "\x1b[31m"
@@ -9,7 +9,7 @@
 #define CYAN    "\x1b[36m"
 #define RESET   "\x1b[0m"
 
-static GLFWwindow *FLCN_WINDOW;
+static GLFWwindow *ASLN_WINDOW;
 static int ASLN_MAX_LINE_LEN,
            ASLN_GLFW_SAMPLES,
            ASLN_AA,

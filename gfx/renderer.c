@@ -4,7 +4,7 @@ static int a = 0;
 void asln_render(void);
 
 void asln_render(void) {
-    extern GLFWwindow *FLCN_WINDOW;
+    extern GLFWwindow *ASLN_WINDOW;
     extern int ASLN_WIN_WIDTH, ASLN_WIN_HEIGHT;
     float ratio = ASLN_WIN_WIDTH / ASLN_WIN_HEIGHT;
     /* Copypasta example code, to be replaced */

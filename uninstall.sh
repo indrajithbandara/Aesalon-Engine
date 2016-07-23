@@ -8,4 +8,4 @@ echo "Removing .desktop File..."
 sudo rm /usr/share/applications/falcon.desktop
 echo "Removing Icons..."
 sudo rm /usr/share/pixmaps/falcon.png
-echo "Falcon has been Successfully Uninstalled"
+echo "Aesalon has been Successfully Uninstalled"

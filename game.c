@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
     if (ASLN_WINDOW == NULL)
         return -1;
 
-    printf("\n | Debugging:\t\t%d\n | Anti-Aliasing:\t%d\n | V-Sync:\t\t%d\n | Resolution:\t\t%d x %d\n", FLCN_DEBUG, FLCN_AA, FLCN_VSYNC, FLCN_WIN_WIDTH, FLCN_WIN_HEIGHT);
+    printf("\n | Debugging:\t\t%d\n | Anti-Aliasing:\t%d\n | V-Sync:\t\t%d\n | Resolution:\t\t%d x %d\n", ASLN_DEBUG, ASLN_AA, ASLN_VSYNC, ASLN_WIN_WIDTH, ASLN_WIN_HEIGHT);
 
     asln_clear_log();
 
@@ -58,7 +58,7 @@ int main(int argc, char *argv[]) {
 
     while (!glfwWindowShouldClose(ASLN_WINDOW)) {
         if (!ASLN_PAUSED)
-            flcn_render();
+            asln_render();
         glfwPollEvents();
     }
 

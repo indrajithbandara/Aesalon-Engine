@@ -2,54 +2,54 @@
 #include <stdlib.h>
 #include <string.h>
 
-extern int FLCN_MAX_LINE_LEN,
-           FLCN_GLFW_SAMPLES,
-           FLCN_AA,
-           FLCN_VSYNC,
-           FLCN_WIN_WIDTH,
-           FLCN_WIN_HEIGHT,
-           FLCN_DEBUG;
+extern int ASLN_MAX_LINE_LEN,
+           ASLN_GLFW_SAMPLES,
+           ASLN_AA,
+           ASLN_VSYNC,
+           ASLN_WIN_WIDTH,
+           ASLN_WIN_HEIGHT,
+           ASLN_DEBUG;
 
-int flcn_load_config(void);
+int asln_load_config(void);
 
 static int parse_buffer(char *buffer) {
     char *token;
-    if (buffer && strlen(buffer) != 0 && buffer[0] == 'F') {
+    if (buffer && strlen(buffer) != 0 && buffer[0] == 'A') {
         token = strtok(buffer, " ");
         if (token) {
-            if (!strcmp(token, "FLCN_AA"))
-                FLCN_AA = atoi(strtok(NULL, "="));
-            else if (!strcmp(token, "FLCN_VSYNC"))
-                FLCN_VSYNC = atoi(strtok(NULL, "="));
-            else if (!strcmp(token, "FLCN_GLFW_SAMPLES"))
-                FLCN_GLFW_SAMPLES = atoi(strtok(NULL, "="));
-            else if (!strcmp(token, "FLCN_MAX_LINE_LEN"))
-                FLCN_MAX_LINE_LEN = atoi(strtok(NULL, "="));
-            else if (!strcmp(token, "FLCN_WIN_WIDTH"))
-                FLCN_WIN_WIDTH = atoi(strtok(NULL, "="));
-            else if (!strcmp(token, "FLCN_WIN_HEIGHT"))
-                FLCN_WIN_HEIGHT = atoi(strtok(NULL, "="));
-            else if (!strcmp(token, "FLCN_DEBUG"))
-                FLCN_DEBUG = atoi(strtok(NULL, "="));
+            if (!strcmp(token, "ASLN_AA"))
+                ASLN_AA = atoi(strtok(NULL, "="));
+            else if (!strcmp(token, "ASLN_VSYNC"))
+                ASLN_VSYNC = atoi(strtok(NULL, "="));
+            else if (!strcmp(token, "ASLN_GLFW_SAMPLES"))
+                ASLN_GLFW_SAMPLES = atoi(strtok(NULL, "="));
+            else if (!strcmp(token, "ASLN_MAX_LINE_LEN"))
+                ASLN_MAX_LINE_LEN = atoi(strtok(NULL, "="));
+            else if (!strcmp(token, "ASLN_WIN_WIDTH"))
+                ASLN_WIN_WIDTH = atoi(strtok(NULL, "="));
+            else if (!strcmp(token, "ASLN_WIN_HEIGHT"))
+                ASLN_WIN_HEIGHT = atoi(strtok(NULL, "="));
+            else if (!strcmp(token, "ASLN_DEBUG"))
+                ASLN_DEBUG = atoi(strtok(NULL, "="));
         }
     }
     return 0;
 }
 
-int flcn_load_config() {
+int asln_load_config() {
     int c, i;
     char *buffer = malloc(100);
-    FILE *config = fopen("falcon.cfg", "r");
+    FILE *config = fopen("aesalon.cfg", "r");
 
     /* Default Values */
-    FLCN_MAX_LINE_LEN = 509;
-    FLCN_GLFW_SAMPLES = 4;
-    FLCN_AA           = 1;
-    FLCN_VSYNC        = 1;
-    FLCN_DEBUG        = 0;
+    ASLN_MAX_LINE_LEN = 509;
+    ASLN_GLFW_SAMPLES = 4;
+    ASLN_AA           = 1;
+    ASLN_VSYNC        = 1;
+    ASLN_DEBUG        = 0;
 
     if (!config)
-        config = fopen("~/falcon.cfg", "r");
+        config = fopen("~/aesalon.cfg", "r");
     if (config) {
         c = i = 0;
         while (c != EOF) {

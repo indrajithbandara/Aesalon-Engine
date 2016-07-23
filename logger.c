@@ -14,7 +14,7 @@ int asln_log(char *line) {
     return -1;
 }
 
-int flcn_clear_log() {
+int asln_clear_log() {
     FILE *log;
     remove("logs/aesalon.log");
     log = fopen("aesalon.log", "w");
