@@ -1,8 +1,7 @@
 # Falcon Engine
 The Falcon Game Engine project.
 
-BUILDING
-========
+***Building***
 **Linux**
 Run build.sh and select the compiler you wish to use to compile the project.
 Then run install.sh to install the project on your system.
@@ -11,10 +10,10 @@ Then run install.sh to install the project on your system.
 There is no real reason why this project won't work on Windows but I haven't
 written any scripts or made any efforts to make it easily installable on it yet.
 
-*Dependencies:*
+***Dependencies:***
 Falcon currently depends on OpenGL and GLFW.
 
-*NOTE:*
+***NOTE:***
 Some larger 3D models and other files will fail to load because they have
 too long lines in the file resulting in a segfault. A common example is
 complex obj models with faces that have a huge number of points. If you
@@ -22,7 +21,7 @@ want to load these files you can change the max line length setting in
 globals.h, this will adjust the buffer sizes in all files to which this
 issue applies such as the obj loader.
 
-*FALCON OBJ LOADER*
+***FALCON OBJ LOADER***
 The Falcon Engine loads 3D models in the Wavefront .obj format.
 The built in parser for this format however is not a compelete
 implmentation of the spec, as my parsers tend to never be. It is
@@ -35,6 +34,6 @@ enforce limits on the ways in which the format is used rather than
 create huge, complex parsers for the sake of having less strict
 formats.
 
-*KNOWN BUGS:*
+***KNOWN BUGS:***
 Config cannot be read when running from Steam, could be some sort of
 sandboxing or something, will look into it some other time.
