@@ -1,19 +1,20 @@
 # Falcon Engine
-The Falcon Game Engine project.
+Welcome to the Falcon Game Engine project, an effort to build a lightweight, fast and powerful 3D game engine in C using the GLFW library & the Sandford C Library.
 
 Building
 ========
+
 **Linux**
 Run build.sh and select the compiler you wish to use to compile the project.
 Then run install.sh to install the project on your system.
 
 **Windows**
-There is no real reason why this project won't work on Windows but I haven't
-written any scripts or made any efforts to make it easily installable on it yet.
+There is no real reason why this project won't work on Windows but I haven't written any scripts or made any efforts to make it easily installable on it yet.
 
 Dependencies
 ============
-Falcon currently depends on OpenGL and GLFW.
+ - OpenGL
+ - GLFW3
 
 Notes
 =====
