@@ -1,0 +1,7 @@
+The 'res' folder is for storing resources such as
+textures and sounds. These are not included with
+the engine itself for the reason that it would
+bloat up the download for people who only want the
+engine source code. You can get the assets from the
+repo "Falcon-Assets", download that repo and place
+its content in this folder and you'll be all set.

@@ -2,3 +2,6 @@ build
 debug
 *.log
 *.out
+res/gfx
+res/mdls
+res/snd
