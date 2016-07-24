@@ -68,12 +68,12 @@ static int parse_buffer(char *buffer) {
     return 0;
 }
 
-obj flcn_load_obj(char *name) {
+obj asln_load_obj(char *name) {
     extern obj model;
     model.name = "";
     model.verts = model.norms = model.texts = NULL;
     model.faces = NULL;
-    char *buffer = malloc(FLCN_MAX_LINE_LEN + 1);
+    char *buffer = malloc(ASLN_MAX_LINE_LEN + 1);
     FILE *file = fopen(name, "r");
     int i, c;
     i = c = 0;
@@ -81,7 +81,7 @@ obj flcn_load_obj(char *name) {
         while (c != EOF) {
             while ((c = fgetc(file)) != '\n' && c != EOF)
                 buffer[i++] = c;
-            if (i < FLCN_MAX_LINE_LEN) {
+            if (i < ALSN_MAX_LINE_LEN) {
                 buffer[i] = '\0';
                 parse_buffer(buffer);
                 i = 0;

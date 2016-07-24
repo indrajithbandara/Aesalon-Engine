@@ -8,6 +8,6 @@ if [ -d debug ]; then
     rm -rf debug
 fi
 
-if [ -f flcn.log ]; then
-    rm flcn.log
+if [ -f aesalon.log ]; then
+    rm aesalon.log
 fi
