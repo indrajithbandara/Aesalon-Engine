@@ -4,6 +4,7 @@ Welcome to the Aesalon (formerly Falcon) Game Engine project, an effort to build
 Dependencies
 ============
  - OpenGL
+ - GLEW
  - GLFW3
 
 Building
