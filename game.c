@@ -20,16 +20,16 @@ void exitGame(void) {
 
 int main(int argc, char *argv[]) {
     const GLFWvidmode *mode;
+
     printf("%sAesalon Game Engine %s%s\n", RED, VERSION, RESET);
-
-    if (!glfwInit())
-        return -1;
-
-    puts("Reading Config...");
+    asln_clear_log();
     asln_load_config();
 
-    if(ASLN_AA)
-        glfwWindowHint(GLFW_SAMPLES, ASLN_GLFW_SAMPLES);
+    glfwInit();
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    if(ASLN_AA) glfwWindowHint(GLFW_SAMPLES, ASLN_GLFW_SAMPLES);
 
     if (!ASLN_WIN_WIDTH || !ASLN_WIN_HEIGHT) {
         mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
@@ -37,21 +37,12 @@ int main(int argc, char *argv[]) {
         ASLN_WIN_HEIGHT = (*mode).height;
     }
 
-    ASLN_WINDOW = glfwCreateWindow(ASLN_WIN_WIDTH, ASLN_WIN_HEIGHT, GAME_TITLE,
-                                   glfwGetPrimaryMonitor(), NULL);
-
-    if (ASLN_WINDOW == NULL)
-        return -1;
-
+    ASLN_WINDOW = glfwCreateWindow(ASLN_WIN_WIDTH, ASLN_WIN_HEIGHT, GAME_TITLE, glfwGetPrimaryMonitor(), NULL);
     printf("\n | Debugging:\t\t%d\n | Anti-Aliasing:\t%d\n | V-Sync:\t\t%d\n | Resolution:\t\t%d x %d\n", ASLN_DEBUG, ASLN_AA, ASLN_VSYNC, ASLN_WIN_WIDTH, ASLN_WIN_HEIGHT);
-
-    asln_clear_log();
 
     glfwMakeContextCurrent(ASLN_WINDOW);
     glfwSwapInterval(ASLN_VSYNC);
     glfwSetKeyCallback(ASLN_WINDOW, key_callback);
-
-
     glfwGetFramebufferSize(ASLN_WINDOW, &ASLN_WIN_WIDTH, &ASLN_WIN_HEIGHT);
 
     asln_init_gl();
