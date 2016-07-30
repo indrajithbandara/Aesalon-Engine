@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 #include "globals.h"
@@ -44,6 +45,9 @@ int main(int argc, char *argv[]) {
     glfwSwapInterval(ASLN_VSYNC);
     glfwSetKeyCallback(ASLN_WINDOW, key_callback);
     glfwGetFramebufferSize(ASLN_WINDOW, &ASLN_WIN_WIDTH, &ASLN_WIN_HEIGHT);
+
+    glewExperimental = GL_TRUE;
+    glewInit();
 
     asln_init_gl();
 
