@@ -4,8 +4,19 @@ void exitGame(void);
 
 void key_callback(GLFWwindow *win, int key, int scancode, int action, int mods) {
     extern int ASLN_PAUSED;
-    if (key == GLFW_KEY_Q && action == GLFW_PRESS)
-        exitGame();
-    else if (key == GLFW_KEY_P && action == GLFW_PRESS)
-        ASLN_PAUSED = !ASLN_PAUSED;
+    switch (key) {
+        case GLFW_KEY_Q :
+            switch (action) {
+                case GLFW_PRESS :
+                    exitGame();
+                    break;
+            } break;
+
+        case GLFW_KEY_P :
+            switch (action) {
+                case GLFW_PRESS :
+                    ASLN_PAUSED = !ASLN_PAUSED;
+                    break;
+            } break;
+    }
 }

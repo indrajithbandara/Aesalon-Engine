@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../input/binding.c"
 
 extern int ASLN_MAX_LINE_LEN,
            ASLN_GLFW_SAMPLES,
@@ -17,20 +18,43 @@ static int parse_buffer(char *buffer) {
     if (buffer && strlen(buffer) != 0 && buffer[0] == 'A') {
         token = strtok(buffer, " ");
         if (token) {
-            if (!strcmp(token, "ASLN_AA"))
-                ASLN_AA = atoi(strtok(NULL, "="));
-            else if (!strcmp(token, "ASLN_VSYNC"))
-                ASLN_VSYNC = atoi(strtok(NULL, "="));
-            else if (!strcmp(token, "ASLN_GLFW_SAMPLES"))
-                ASLN_GLFW_SAMPLES = atoi(strtok(NULL, "="));
-            else if (!strcmp(token, "ASLN_MAX_LINE_LEN"))
-                ASLN_MAX_LINE_LEN = atoi(strtok(NULL, "="));
-            else if (!strcmp(token, "ASLN_WIN_WIDTH"))
-                ASLN_WIN_WIDTH = atoi(strtok(NULL, "="));
-            else if (!strcmp(token, "ASLN_WIN_HEIGHT"))
-                ASLN_WIN_HEIGHT = atoi(strtok(NULL, "="));
-            else if (!strcmp(token, "ASLN_DEBUG"))
-                ASLN_DEBUG = atoi(strtok(NULL, "="));
+            if      (strcmp(token, "ASLN_AA")           == 0) ASLN_AA           = atoi(strtok(NULL, "="));
+            else if (strcmp(token, "ASLN_VSYNC")        == 0) ASLN_VSYNC        = atoi(strtok(NULL, "="));
+            else if (strcmp(token, "ASLN_GLFW_SAMPLES") == 0) ASLN_GLFW_SAMPLES = atoi(strtok(NULL, "="));
+            else if (strcmp(token, "ASLN_MAX_LINE_LEN") == 0) ASLN_MAX_LINE_LEN = atoi(strtok(NULL, "="));
+            else if (strcmp(token, "ASLN_WIN_WIDTH")    == 0) ASLN_WIN_WIDTH    = atoi(strtok(NULL, "="));
+            else if (strcmp(token, "ASLN_WIN_HEIGHT")   == 0) ASLN_WIN_HEIGHT   = atoi(strtok(NULL, "="));
+            else if (strcmp(token, "ASLN_DEBUG")        == 0) ASLN_DEBUG        = atoi(strtok(NULL, "="));
+
+            else if (strcmp(token, "BIND_KEY_A") == 0) alsn_bind_key('A', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_B") == 0) alsn_bind_key('B', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_C") == 0) alsn_bind_key('C', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_D") == 0) alsn_bind_key('D', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_E") == 0) alsn_bind_key('E', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_F") == 0) alsn_bind_key('F', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_G") == 0) alsn_bind_key('G', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_H") == 0) alsn_bind_key('H', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_I") == 0) alsn_bind_key('I', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_J") == 0) alsn_bind_key('J', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_K") == 0) alsn_bind_key('K', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_L") == 0) alsn_bind_key('L', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_M") == 0) alsn_bind_key('M', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_N") == 0) alsn_bind_key('N', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_O") == 0) alsn_bind_key('O', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_P") == 0) alsn_bind_key('P', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_Q") == 0) alsn_bind_key('Q', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_R") == 0) alsn_bind_key('R', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_S") == 0) alsn_bind_key('S', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_T") == 0) alsn_bind_key('T', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_U") == 0) alsn_bind_key('U', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_V") == 0) alsn_bind_key('V', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_W") == 0) alsn_bind_key('W', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_X") == 0) alsn_bind_key('X', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_Y") == 0) alsn_bind_key('Y', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_Z") == 0) alsn_bind_key('Z', strtok(NULL, "="));
+
+            else if (strcmp(token, "BIND_LEFT_CLICK")  == 0) alsn_bind_mbutton(1, strtok(NULL, "="));
+            else if (strcmp(token, "BIND_RIGHT_CLICK") == 0) alsn_bind_mbutton(2, strtok(NULL, "="));
         }
     }
     return 0;
