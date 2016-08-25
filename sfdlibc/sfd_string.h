@@ -1,8 +1,22 @@
 #include <stdlib.h>
+#include <string.h>
 
-int   sfd_strlen(const char *s);
-char *sfd_strdup(const char *s);
-char *sfd_strcat(const char *s1, const char *s2);
+int sfd_streql(const char*, const char*);
+int sfd_strlen(const char*);
+
+char *sfd_strdup(const char*);
+char *sfd_strcat(const char*, const char*);
+char *sfd_strtok(char*, const char*);
+
+int sfd_streql(const char *s1, const char *s2) {
+    int i, l = sfd_strlen(s1);
+    if (l != sfd_strlen(s2))
+        return 0;
+    for (i = 0; i < l; i++)
+        if (s1[i] != s2[i])
+            return 0;
+    return 1;
+}
 
 int sfd_strlen(const char *s) {
     int i = 0;
@@ -30,4 +44,9 @@ char *sfd_strcat(const char *s1, const char *s2) {
         s3[i++] = c;
     s3[i] = '\0';
     return s3;
+}
+
+char *sfd_strtok(char *s, const char *d) {
+    /* Temp until implemented */
+    return strtok(s, d);
 }
