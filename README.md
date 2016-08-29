@@ -1,6 +1,13 @@
 # Aesalon Engine
 Welcome to the Aesalon (formerly Falcon) Game Engine project, an effort to build a lightweight, fast and powerful 3D game engine in C using the GLFW library & the Sandford C Library.
 
+License
+=======
+The Aesalon Project is licensed under the 2-clause BSD license refered to as the
+"Simplified BSD License" or the "FreeBSD License". This license is very
+permissive and allows you to do almost anything with the code, it is also
+compatable with the GNU General Public License.
+
 Dependencies
 ============
  - OpenGL
