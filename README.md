@@ -1,5 +1,5 @@
 # Aesalon Engine
-Welcome to the Aesalon (formerly Falcon) Game Engine project, an effort to build a lightweight, fast and powerful 3D game engine in C using the GLFW library & the Sandford C Library.
+Welcome to the Aesalon (formerly Falcon) Game Engine project, an effort to build a lightweight, fast and powerful 3D game engine in C using the GLFW library & the Sandford C Library. Aesalon is Linux only. Windows support is not desired, its missing by design. Requests for Windows support will be ignored, contributions of Windows code will be rejected.
 
 License
 =======
@@ -16,26 +16,12 @@ Dependencies
 
 Building
 ========
-Ensure you have GCC or LLVM Clang installed on Linux
-OR
-Ensure you have GCC installed on Windows, you can do this through MinGW,
-make sure you add it to your system path or the buildscript won't be able to
-invoke it.
-
-**Linux**
+Ensure you have GCC or LLVM Clang installed
 Run build.sh and select the compiler you wish to use to compile the project.
-
-**Windows**
-Run build.bat to compile the project.
 
 Installing & Running
 ====================
-
-**Linux**
 Run install.sh to install the project on your system.
-
-**Windows**
-Install MinGW and run install.bat to install the project on your system.
 
 **Please Note:**
 To actually be able to play a game you will need the game assets. These are not
