@@ -1,11 +1,14 @@
-#include <GLFW/glfw3.h>
-
 void asln_render(void);
 
 void asln_render(void) {
-    extern GLFWwindow *ASLN_WINDOW;
-    extern int ASLN_WIN_WIDTH, ASLN_WIN_HEIGHT;
-
-    glClear(GL_COLOR_BUFFER_BIT);
+    /*glClear(GL_COLOR_BUFFER_BIT);*/
+    glBegin(GL_TRIANGLES);
+        glColor3f(1, 0, 0);
+        glVertex3f(-1, 0, 0);
+        glColor3f(0, 1, 0);
+        glVertex3f(0, 1, 0);
+        glColor3f(0, 0, 1);
+        glVertex3f(1, 0, 0);
+    glEnd();
     glfwSwapBuffers(ASLN_WINDOW);
 }

@@ -1,4 +1,4 @@
-#define VERSION    "0.091"
+#define VERSION    "0.092"
 #define GAME_TITLE "Aesalon Engine Test"
 
 #define RED     "\x1b[31m"

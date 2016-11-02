@@ -17,12 +17,12 @@ read compiler
 
 echo "Building Debug Version..."
 if [ $compiler == '2' ]; then
-    clang -ggdb -ansi -pedantic-errors -Weverything -lGLEW -lglfw -lGL game.c -o ./debug/game
+    clang -ggdb -ansi -pedantic-errors -Weverything -lGLEW -lglfw -lGL ../game.c -o ../debug/game
     echo "Building..."
-    clang -O3 -lGLEW -lglfw -lGL game.c -o ./build/game
+    clang -O3 -lGLEW -lglfw -lGL ../game.c -o ../build/game
 else
-    gcc -ggdb -ansi -lGLEW -lglfw -lGL game.c -o ./debug/game
+    gcc -ggdb -ansi -lGLEW -lglfw -lGL ../game.c -o ../debug/game
     echo "Building..."
-    gcc -O3 -lglfw -lGLEW -lGL game.c -o ./build/game
+    gcc -O3 -lglfw -lGLEW -lGL ../game.c -o ../build/game
 fi
 echo "Done"

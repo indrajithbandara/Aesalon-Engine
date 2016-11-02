@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../sfdlibc/sfd_string.h"
+#include <string.h>
 #include "../input/binding.c"
 
 extern int ASLN_MAX_LINE_LEN,
@@ -15,46 +15,46 @@ int asln_load_config(void);
 
 static int parse_buffer(char *buffer) {
     char *token;
-    if (buffer && sfd_strlen(buffer) != 0 && buffer[0] == 'A') {
-        token = sfd_strtok(buffer, " ");
+    if (buffer && strlen(buffer) != 0 && buffer[0] == 'A') {
+        token = strtok(buffer, " ");
         if (token) {
-            if      (sfd_streql(token, "ASLN_AA"))           ASLN_AA           = atoi(sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "ASLN_VSYNC"))        ASLN_VSYNC        = atoi(sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "ASLN_GLFW_SAMPLES")) ASLN_GLFW_SAMPLES = atoi(sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "ASLN_MAX_LINE_LEN")) ASLN_MAX_LINE_LEN = atoi(sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "ASLN_WIN_WIDTH"))    ASLN_WIN_WIDTH    = atoi(sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "ASLN_WIN_HEIGHT"))   ASLN_WIN_HEIGHT   = atoi(sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "ASLN_DEBUG"))        ASLN_DEBUG        = atoi(sfd_strtok(NULL, "="));
+            if      (strcmp(token, "ASLN_AA")           == 0) ASLN_AA           = atoi(strtok(NULL, "="));
+            else if (strcmp(token, "ASLN_VSYNC")        == 0) ASLN_VSYNC        = atoi(strtok(NULL, "="));
+            else if (strcmp(token, "ASLN_GLFW_SAMPLES") == 0) ASLN_GLFW_SAMPLES = atoi(strtok(NULL, "="));
+            else if (strcmp(token, "ASLN_MAX_LINE_LEN") == 0) ASLN_MAX_LINE_LEN = atoi(strtok(NULL, "="));
+            else if (strcmp(token, "ASLN_WIN_WIDTH")    == 0) ASLN_WIN_WIDTH    = atoi(strtok(NULL, "="));
+            else if (strcmp(token, "ASLN_WIN_HEIGHT")   == 0) ASLN_WIN_HEIGHT   = atoi(strtok(NULL, "="));
+            else if (strcmp(token, "ASLN_DEBUG")        == 0) ASLN_DEBUG        = atoi(strtok(NULL, "="));
 
-            else if (sfd_streql(token, "BIND_KEY_A")) asln_bind_key('A', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_B")) asln_bind_key('B', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_C")) asln_bind_key('C', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_D")) asln_bind_key('D', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_E")) asln_bind_key('E', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_F")) asln_bind_key('F', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_G")) asln_bind_key('G', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_H")) asln_bind_key('H', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_I")) asln_bind_key('I', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_J")) asln_bind_key('J', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_K")) asln_bind_key('K', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_L")) asln_bind_key('L', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_M")) asln_bind_key('M', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_N")) asln_bind_key('N', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_O")) asln_bind_key('O', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_P")) asln_bind_key('P', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_Q")) asln_bind_key('Q', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_R")) asln_bind_key('R', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_S")) asln_bind_key('S', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_T")) asln_bind_key('T', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_U")) asln_bind_key('U', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_V")) asln_bind_key('V', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_W")) asln_bind_key('W', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_X")) asln_bind_key('X', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_Y")) asln_bind_key('Y', sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_KEY_Z")) asln_bind_key('Z', sfd_strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_A") == 0) asln_bind_key('A', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_B") == 0) asln_bind_key('B', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_C") == 0) asln_bind_key('C', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_D") == 0) asln_bind_key('D', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_E") == 0) asln_bind_key('E', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_F") == 0) asln_bind_key('F', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_G") == 0) asln_bind_key('G', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_H") == 0) asln_bind_key('H', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_I") == 0) asln_bind_key('I', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_J") == 0) asln_bind_key('J', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_K") == 0) asln_bind_key('K', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_L") == 0) asln_bind_key('L', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_M") == 0) asln_bind_key('M', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_N") == 0) asln_bind_key('N', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_O") == 0) asln_bind_key('O', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_P") == 0) asln_bind_key('P', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_Q") == 0) asln_bind_key('Q', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_R") == 0) asln_bind_key('R', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_S") == 0) asln_bind_key('S', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_T") == 0) asln_bind_key('T', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_U") == 0) asln_bind_key('U', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_V") == 0) asln_bind_key('V', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_W") == 0) asln_bind_key('W', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_X") == 0) asln_bind_key('X', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_Y") == 0) asln_bind_key('Y', strtok(NULL, "="));
+            else if (strcmp(token, "BIND_KEY_Z") == 0) asln_bind_key('Z', strtok(NULL, "="));
 
-            else if (sfd_streql(token, "BIND_LEFT_CLICK"))  asln_bind_mbutton(1, sfd_strtok(NULL, "="));
-            else if (sfd_streql(token, "BIND_RIGHT_CLICK")) asln_bind_mbutton(2, sfd_strtok(NULL, "="));
+            else if (strcmp(token, "BIND_LEFT_CLICK")  == 0) asln_bind_mbutton(1, strtok(NULL, "="));
+            else if (strcmp(token, "BIND_RIGHT_CLICK") == 0) asln_bind_mbutton(2, strtok(NULL, "="));
         }
     }
     return 0;
@@ -91,5 +91,6 @@ int asln_load_config() {
         fclose(config);
     }
     free(buffer);
+    printf("\n | Debugging:\t\t%d\n | Anti-Aliasing:\t%d\n | V-Sync:\t\t%d\n | Resolution:\t\t%d x %d\n", ASLN_DEBUG, ASLN_AA, ASLN_VSYNC, ASLN_WIN_WIDTH, ASLN_WIN_HEIGHT);
     return -1;
 }
