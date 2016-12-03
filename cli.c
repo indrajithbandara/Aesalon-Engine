@@ -5,8 +5,10 @@ void asln_main_menu(void);
 
 int asln_cli_error(char *msg) {
     printf("\n | %s%s%s ", RED, msg, RESET);
+    return 0;
 }
 
 int asln_cli_info(char *msg) {
-    printf("\n | %s ", msg);
+    printf(" | %s\n", msg);
+    return 0;
 }

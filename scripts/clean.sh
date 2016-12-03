@@ -1,13 +1,13 @@
 #!/bin/bash
 
 if [ -d ../build ]; then
-    rm -rf ../build
+    rm -rf ./build
 fi
 
 if [ -d ../debug ]; then
-    rm -rf ../debug
+    rm -rf ./debug
 fi
 
 if [ -f ../aesalon.log ]; then
-    rm ../aesalon.log
+    rm ./aesalon.log
 fi

@@ -1,26 +1,44 @@
 int asln_init_gl(void);
+void asln_splash(void);
 static int build_shaders(void);
 static int check_gl_info();
+static void check_gl_features();
 
 static int check_gl_info() {
-    printf("\n | OpenGL Version Info: %s\n", glGetString(GL_VERSION));
-    printf("\n | GLSL Version Info: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
-
-    asln_cli_info("Checking for OpenGL 3.3 Support...");
-    if (glewIsSupported("GL_VERSION_3_3")) puts("Yes");
-    else puts("No");
-    asln_cli_info("Checking for Tessalation Support... ");
-    if (glewIsSupported("GL_ARB_tessellation_shader")) puts("Yes");
-    else puts("No");
+    printf(" | OpenGL Version Info:\t%s\n", glGetString(GL_VERSION));
+    printf(" | GLSL Version Info:\t%s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
+    check_gl_features();
     return 0;
 }
 
 static int build_shaders() {
     /* Do Shit */
+    return 0;
+}
+
+void asln_splash() {
+    ;
+}
+
+void check_gl_features() {
+    asln_cli_info("");
+    asln_cli_info("Checking for OpenGL 3.3 Support...");
+    if (glewIsSupported("GL_VERSION_3_3"))
+        asln_cli_info("OpenGL 3.3 is Supported");
+    else
+        asln_cli_info("OpenGL 3.3 is NOT Supported");
+    asln_cli_info("");
+    asln_cli_info("Checking for Tessalation Support... ");
+    if (glewIsSupported("GL_ARB_tessellation_shader"))
+        asln_cli_info("Tessalation is Supported");
+    else
+        asln_cli_info("Tessalation is NOT Supported");
+    asln_cli_info("");
 }
 
 int asln_init_gl(void) {
     const GLFWvidmode *mode;
+    asln_cli_info("Initialising GLFW...");
     if (!glfwInit()) {
         asln_cli_error("GLFW Initialisation Failed");
         exit(-1);
@@ -43,6 +61,7 @@ int asln_init_gl(void) {
     glfwMakeContextCurrent(ASLN_WINDOW);
     glfwSwapInterval(ASLN_VSYNC);
     glfwGetFramebufferSize(ASLN_WINDOW, &ASLN_WIN_WIDTH, &ASLN_WIN_HEIGHT);
+    printf(" | Using Resolution %d x %d\n", ASLN_WIN_WIDTH, ASLN_WIN_HEIGHT);
     glViewport(0, 0, ASLN_WIN_WIDTH, ASLN_WIN_HEIGHT);
 
 /*
@@ -54,6 +73,7 @@ int asln_init_gl(void) {
 
     glewExperimental = GL_TRUE;
 
+    asln_cli_info("Initialising GLEW...");
     if (!(glewInit() == GLEW_OK)) {
         asln_cli_error("GLEW Initialisation Failed");
         exit(-1);

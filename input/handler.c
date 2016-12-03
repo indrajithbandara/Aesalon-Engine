@@ -1,5 +1,16 @@
+void weapon_fire(void);
+void key_callback(GLFWwindow*, int, int, int, int);
+void mouse_btn_callback(GLFWwindow*, int, int, int);
+void input_init(void);
+void asln_fire_sound(void);
+void asln_reload_sound(void);
+
 void weapon_fire() {
-    puts("BANG");
+    asln_fire_sound();
+}
+
+void weapon_reload() {
+    asln_reload_sound();
 }
 
 void key_callback(GLFWwindow *win, int key, int scancode, int action, int mods) {
@@ -8,14 +19,19 @@ void key_callback(GLFWwindow *win, int key, int scancode, int action, int mods) 
         case GLFW_KEY_Q :
             switch (action) {
                 case GLFW_PRESS :
-                    /* ADD GLFW WINDOW SHOULD CLOSE HERE */
-                    exit(0);
+                    glfwSetWindowShouldClose(ASLN_WINDOW, 1);
                     break;
             } break;
         case GLFW_KEY_P :
             switch (action) {
                 case GLFW_PRESS :
                     ASLN_PAUSED = !ASLN_PAUSED;
+                    break;
+            } break;
+        case GLFW_KEY_R :
+            switch (action) {
+                case GLFW_PRESS :
+                    weapon_reload();
                     break;
             } break;
     }
