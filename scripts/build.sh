@@ -9,6 +9,6 @@ if [ ! -d ./debug ]; then
 fi
 
 echo "Building Debug..."
-clang -ggdb -ansi -pedantic-errors -Weverything -lGLEW -lglfw -lGL -lopenal -lalut ./game.c -o ./debug/game
+clang -ggdb -ansi -pedantic-errors -Weverything -lGLEW -lglfw -lGL -lopenal ./game.c -o ./debug/game
 echo "Building Release..."
-clang -O3 -ansi -lGLEW -lglfw -lGL -lopenal -lalut ./game.c -o ./build/game
+clang -O3 -ansi -lGLEW -lglfw -lGL -lopenal ./game.c -o ./build/game
