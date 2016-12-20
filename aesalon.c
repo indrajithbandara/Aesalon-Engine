@@ -9,7 +9,8 @@
 
 #include "globals.h"
 
-#include "sfdlibs/sfdlib_wav.h"
+#include "sfdlibs/sfdlib_wav.c"
+#include "sfdlibs/sfdlib_bmp.c"
 
 #include "cli.c"
 #include "logger.c"
