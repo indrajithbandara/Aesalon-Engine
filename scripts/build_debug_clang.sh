@@ -5,4 +5,4 @@ if [ ! -d ./debug ]; then
 fi
 
 echo "Building Debug Version with LLVM Clang..."
-clang -ggdb -ansi -pedantic-errors -Weverything ./aesalon.c -o ./build/aesalon -lGLEW -lglfw -lGL -lopenal
+clang -ggdb -ansi -pedantic-errors -Weverything ./aesalon.c -o ./debug/aesalon -lGLEW -lglfw -lGL -lopenal

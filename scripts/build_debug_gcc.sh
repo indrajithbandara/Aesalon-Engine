@@ -5,4 +5,4 @@ if [ ! -d ./debug ]; then
 fi
 
 echo "Building Debug Version with GCC..."
-gcc -ggdb -ansi -pedantic-errors ./aesalon.c -o ./build/aesalon -lGLEW -lglfw -lGL -lopenal
+gcc -ggdb -ansi -pedantic-errors ./aesalon.c -o ./debug/aesalon -lGLEW -lglfw -lGL -lopenal
