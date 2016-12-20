@@ -18,8 +18,8 @@ Dependencies
 Building
 ========
 Ensure you have GCC or LLVM Clang installed.
-From the project folder run ./scripts/build_gcc.sh or ./scripts/build_clang.sh to build with whichever compiler you prefer, do not cd into the scripts folder to run them.
+From the project folder run `./scripts/build_gcc.sh` or `./scripts/build_clang.sh` to build with whichever compiler you prefer, do not cd into the scripts folder to run them.
 
 Running
 =======
-While still in the project folder and after building the project you can run it using ./build/aesalon
+While still in the project folder and after building the project you can run it using `./build/aesalon`
