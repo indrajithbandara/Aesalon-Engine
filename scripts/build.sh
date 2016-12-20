@@ -9,6 +9,6 @@ if [ ! -d ./debug ]; then
 fi
 
 echo "Building Debug..."
-gcc -ggdb -ansi -pedantic-errors -Weverything ./game.c -o ./build/game -lGLEW -lglfw -lGL -lopenal
+gcc -ggdb -ansi -pedantic-errors -Weverything ./aesalon.c -o ./build/aesalon -lGLEW -lglfw -lGL -lopenal
 echo "Building Release..."
-gcc -O3 -ansi ./game.c -o ./build/game -lGLEW -lglfw -lGL -lopenal
+gcc -O3 -ansi ./aesalon.c -o ./build/aesalon -lGLEW -lglfw -lGL -lopenal

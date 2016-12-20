@@ -10,26 +10,31 @@ int asln_init_al() {
         alcMakeContextCurrent(ASLN_AUDIO_CONTEXT);
         alGenBuffers(5, ASLN_AUDIO_BUFS);
         alGenSources(5, ASLN_AUDIO_SRCS);
+        
         if ((wav = sfd_import_wav("res/snd/fire.wav")) != NULL) {
             alBufferData(ASLN_AUDIO_BUFS[1], AL_FORMAT_STEREO16, wav->data, wav->size, wav->freq);
             free(wav->data);
             free(wav);
-        } else asln_cli_info("Failed to Load fire.wav");
+        } else
+            asln_cli_info("Failed to Load fire.wav");
+        
         if ((wav = sfd_import_wav("res/snd/shell_falls.wav")) != NULL) {
             alBufferData(ASLN_AUDIO_BUFS[2], AL_FORMAT_STEREO16, wav->data, wav->size, wav->freq);
-            free(wav->data);
-            free(wav);
-        } else asln_cli_info("Failed to Load shell_falls.wav");
+            sfd_free_wav(wav);
+        } else
+            asln_cli_info("Failed to Load shell_falls.wav");
+        
         if ((wav = sfd_import_wav("res/snd/reload.wav")) != NULL) {
             alBufferData(ASLN_AUDIO_BUFS[3], AL_FORMAT_STEREO16, wav->data, wav->size, wav->freq);
-            free(wav->data);
-            free(wav);
-        } else asln_cli_info("Failed to Load reload.wav");
+            sfd_free_wav(wav);
+        } else
+            asln_cli_info("Failed to Load reload.wav");
+        
         if ((wav = sfd_import_wav("res/snd/lock_and_load.wav")) != NULL) {
             alBufferData(ASLN_AUDIO_BUFS[4], AL_FORMAT_STEREO16, wav->data, wav->size, wav->freq);
-            free(wav->data);
-            free(wav);
-        } else asln_cli_info("Failed to Load lock_and_load.wav");
+            sfd_free_wav(wav);
+        } else
+            asln_cli_info("Failed to Load lock_and_load.wav");
     }
     return 0;
 }
@@ -38,12 +43,12 @@ int asln_play_theme() {
     WAV *wav = sfd_import_wav("res/snd/menu_theme.wav");
     if (wav != NULL) {
         alBufferData(ASLN_AUDIO_BUFS[0], AL_FORMAT_STEREO16, wav->data, wav->size, wav->freq);
-        free(wav->data);
-        free(wav);
+        sfd_free_wav(wav);
         alSourcei(ASLN_AUDIO_SRCS[0], AL_BUFFER, (ALint)ASLN_AUDIO_BUFS[0]);
         alSourcei(ASLN_AUDIO_SRCS[0], AL_LOOPING, AL_TRUE);
         alSourcePlay(ASLN_AUDIO_SRCS[0]);
-    } else asln_cli_info("Failed to Load menu_theme.wav");
+    } else
+        asln_cli_info("Failed to Load menu_theme.wav");
     return 0;
 }
 

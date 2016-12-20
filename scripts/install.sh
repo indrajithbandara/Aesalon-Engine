@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ -f build/game ]; then
+if [ -f build/aesalon ]; then
     echo "Copying Executable to /usr/games/bin..."
-    sudo cp ./build/game /usr/games/bin/aesalon
+    sudo cp ./build/aesalon /usr/games/bin/aesalon
     echo "Copying Config..."
     cp ./aesalon.cfg ~/aesalon.cfg
     echo "Installing .desktop File..."
