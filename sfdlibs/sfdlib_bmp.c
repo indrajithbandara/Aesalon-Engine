@@ -22,6 +22,7 @@ BMP *sfd_import_bmp(char *fname) {
             fread(&(bmp->depth), 2, 1, f);
             fread(&i, 4, 1, f);
             if (bmp->depth == 24 && i == 0) {
+                int row_size;
                 fseek(f, offset, SEEK_SET);
                 bmp->pix_data = malloc(bmp->height * sizeof(unsigned char*));
                 row_size = (((bmp->depth * bmp->width) + 31) / 32) * 4;
