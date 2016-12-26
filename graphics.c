@@ -1,8 +1,16 @@
-int asln_init_gl(void);
-void asln_splash(void);
+int asln_graphics_init(void);
+void asln_graphics_render(void);
+void asln_graphics_splash(void);
+
 static int build_shaders(void);
 static int check_gl_info();
 static void check_gl_features();
+
+
+void asln_graphics_render(void) {
+    /*glClear(GL_COLOR_BUFFER_BIT);*/
+    glfwSwapBuffers(ASLN_WINDOW);
+}
 
 static int check_gl_info() {
     printf(" | OpenGL Version Info:\t%s\n", glGetString(GL_VERSION));
@@ -12,11 +20,10 @@ static int check_gl_info() {
 }
 
 static int build_shaders() {
-    /* Do Shit */
     return 0;
 }
 
-void asln_splash() {
+void asln_graphics_splash() {
     ;
 }
 
@@ -36,7 +43,7 @@ void check_gl_features() {
     asln_cli_info("");
 }
 
-int asln_init_gl(void) {
+int asln_graphics_init(void) {
     const GLFWvidmode *mode;
     asln_cli_info("Initialising GLFW...");
     if (!glfwInit()) {

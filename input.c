@@ -1,17 +1,10 @@
-void weapon_fire(void);
+void asln_input_init(void);
+
 void key_callback(GLFWwindow*, int, int, int, int);
 void mouse_btn_callback(GLFWwindow*, int, int, int);
-void input_init(void);
-void asln_fire_sound(void);
-void asln_reload_sound(void);
 
-void weapon_fire() {
-    asln_fire_sound();
-}
-
-void weapon_reload() {
-    asln_reload_sound();
-}
+int asln_bind_key(char, char*);
+int asln_bind_mbutton(int, char*);
 
 void key_callback(GLFWwindow *win, int key, int scancode, int action, int mods) {
     extern int ASLN_PAUSED;
@@ -31,7 +24,7 @@ void key_callback(GLFWwindow *win, int key, int scancode, int action, int mods) 
         case GLFW_KEY_R :
             switch (action) {
                 case GLFW_PRESS :
-                    weapon_reload();
+                    /*weapon_reload()*/;
                     break;
             } break;
     }
@@ -39,10 +32,20 @@ void key_callback(GLFWwindow *win, int key, int scancode, int action, int mods) 
 
 void mouse_btn_callback(GLFWwindow *win, int button, int action, int mods) {
     if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
-        weapon_fire();
+        /*weapon_fire()*/;
 }
 
-void input_init() {
+void asln_input_init() {
     glfwSetKeyCallback(ASLN_WINDOW, key_callback);
     glfwSetMouseButtonCallback(ASLN_WINDOW, mouse_btn_callback);
+}
+
+int asln_bind_key(char key, char *action) {
+    /* TODO */
+    return 0;
+}
+
+int asln_bind_mbutton(int btn, char *action) {
+    /* TODO */
+    return 0;
 }

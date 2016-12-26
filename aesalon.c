@@ -14,14 +14,10 @@
 
 #include "cli.c"
 #include "logger.c"
-#include "input/handler.c"
-#include "input/binding.c"
-#include "loaders/cfg_loader.c"
-#include "gfx/gl_init.c"
-#include "gfx/renderer.c"
-#include "audio/al_init.c"
-#include "gameloop.c"
-#include "menus.c"
+#include "input.c"
+#include "config.c"
+#include "graphics.c"
+#include "audio.c"
 
 void asln_shutdown() {
     if (ASLN_AUDIO_CONTEXT != NULL) {
@@ -36,15 +32,18 @@ void asln_shutdown() {
 }
 
 int main(int argc, char *argv[]) {
-    printf("%sAesalon Game Engine %s%s\n\n", RED, VERSION, RESET);
-    asln_clear_log();
-    asln_load_config();
-    asln_init_gl();
-    asln_splash();
-    input_init();
-    asln_init_al();
-    asln_play_theme();
-    asln_gameloop();
+    printf("%s | Aesalon Game Engine %s |%s\n\n", RED, VERSION, RESET);
+    asln_logger_clear();
+    asln_config_load();
+    asln_graphics_init();
+    asln_graphics_splash();
+    asln_input_init();
+    asln_audio_init();
+    while (!glfwWindowShouldClose(ASLN_WINDOW)) {
+        if (!ASLN_PAUSED)
+            asln_graphics_render();
+        glfwPollEvents();
+    }
     asln_shutdown();
     return 0;
 }

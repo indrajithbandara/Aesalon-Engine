@@ -4,8 +4,8 @@ void asln_opts_menu(void);
 void asln_main_menu(void);
 
 int asln_cli_error(char *msg) {
-    printf("\n | %s%s%s ", RED, msg, RESET);
-    return 0;
+    printf(" | %s%s%s\n", RED, msg, RESET);
+    return -1;
 }
 
 int asln_cli_info(char *msg) {

@@ -1,11 +1,3 @@
-extern int ASLN_MAX_LINE_LEN,
-           ASLN_GLFW_SAMPLES,
-           ASLN_AA,
-           ASLN_VSYNC,
-           ASLN_WIN_WIDTH,
-           ASLN_WIN_HEIGHT,
-           ASLN_DEBUG;
-
 int asln_load_config(void);
 
 static int parse_buffer(char *buffer) {
@@ -55,9 +47,7 @@ static int parse_buffer(char *buffer) {
     return 0;
 }
 
-int asln_load_config() {
-    int c, i;
-    char *buffer = malloc(100);
+int asln_config_load() {
     FILE *config = fopen("aesalon.cfg", "r");
 
     /* Default Values */
@@ -67,10 +57,14 @@ int asln_load_config() {
     ASLN_VSYNC        = 1;
     ASLN_DEBUG        = 0;
 
+    asln_cli_info("Reading Config...");
+
     if (!config)
         config = fopen("~/aesalon.cfg", "r");
+
     if (config) {
-        c = i = 0;
+        int c, i = 0;
+        char *buffer = malloc(ASLN_MAX_LINE_LEN);
         while (c != EOF) {
             while ((c = fgetc(config)) != '\n' && c != EOF)
                 buffer[i++] = (char)c;
@@ -83,9 +77,9 @@ int asln_load_config() {
                 break;
             }
         }
+        free(buffer);
         fclose(config);
-    }
-    free(buffer);
-    printf(" | Reading Config File...\n | Debugging:\t\t%d\n | Anti-Aliasing:\t%d\n | V-Sync:\t\t%d\n | Resolution:\t\t%d x %d\n", ASLN_DEBUG, ASLN_AA, ASLN_VSYNC, ASLN_WIN_WIDTH, ASLN_WIN_HEIGHT);
-    return -1;
+    } else
+        asln_cli_error("Unable to Open Config");
+    return 0;
 }
