@@ -3,9 +3,10 @@
 
 static ALCdevice  *ASLN_AUDIO_DEV;
 static ALCcontext *ASLN_AUDIO_CONTEXT;
-static ALuint     ASLN_AUDIO_BUFS[ASLN_MAX_AUDIO_BUFS];
-static ALuint     ASLN_AUDIO_SRCS[ASLN_MAX_AUDIO_SRCS];
-static ALuint     ASLN_BUFFER_COUNT;
+
+static ALuint ASLN_AUDIO_BUFS[ASLN_MAX_AUDIO_BUFS];
+static ALuint ASLN_AUDIO_SRCS[ASLN_MAX_AUDIO_SRCS];
+static ALuint ASLN_BUFFER_COUNT;
 
 int asln_audio_init(void);
 void asln_audio_play(WAV*, ALuint);

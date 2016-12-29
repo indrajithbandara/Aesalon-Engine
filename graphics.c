@@ -50,11 +50,11 @@ int asln_graphics_init(void) {
         asln_cli_error("GLFW Initialisation Failed");
         exit(-1);
     }
-/*
+
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-*/
+
     if(ASLN_AA)
         glfwWindowHint(GLFW_SAMPLES, ASLN_GLFW_SAMPLES);
 
@@ -88,5 +88,6 @@ int asln_graphics_init(void) {
 
     check_gl_info();
     build_shaders();
+    asln_graphics_splash();
     return 0;
 }
