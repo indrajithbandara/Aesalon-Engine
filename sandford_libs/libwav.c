@@ -1,12 +1,30 @@
+/* sfdlib_wav.c - This file is part of sfdlibs, the Userland C Libraries of the
+ * Sandford Operating System.
+ * Copyright 2016, 2017 Brian Millar <brianmillar@protonmail.ch>
+ *
+ * sfdlibs is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * sfdlibs is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with sfdlibs.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 typedef struct WAV {
     int fsize, size, freq;
     short channels, bits;
     void *data;
 } WAV;
 
-WAV *sfd_import_wav(char*);
+WAV *import_wav(char*);
 
-WAV *sfd_import_wav(char *fname) {
+WAV *import_wav(char *fname) {
     FILE *f = fopen(fname, "rb");
     if (f != NULL) {
         char *s1 = malloc(5);
@@ -42,7 +60,7 @@ WAV *sfd_import_wav(char *fname) {
     return NULL;
 }
 
-void sfd_free_wav(WAV *wav) {
+void free_wav(WAV *wav) {
     free(wav->data);
     free(wav);
 }
