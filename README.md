@@ -1,24 +1,25 @@
 # Aesalon Engine
-Welcome to the Aesalon Game Engine project, an effort to build a lightweight, fast and powerful 3D game engine in ANSI C using OpenGL, OpenAL, the GLFW library, Sandford C Library and the Sandford Userspace Libraries. Aesalon is currently built for GNU/Linux systems only.
+Welcome to the Aesalon Game Engine project, an effort to build a lightweight,
+fast and powerful 3D game engine in ANSI C using the next gen Vulkan API,
+OpenAL, the GLFW library, Sandford C Library and the Sandford Userspace Libraries.
+Aesalon is built for GNU/Linux first with added support for \*BSD and Microsoft Windows.
+
 
 License
 =======
-The Aesalon Project is licensed under the 2-clause BSD license refered to as the
-"Simplified BSD License" or the "FreeBSD License". This license is very
-permissive and allows you to do almost anything with the code, it is also
-compatable with the GNU General Public License.
+The Aesalon Project is licensed under version 3 of the GNU General Public License, 
+see the COPYING file or visit http://www.gnu.org/licenses/
 
 Dependencies
 ============
- - OpenGL
- - OpenAL
- - GLEW
  - GLFW3
+ - Vulkan
+ - OpenAL
 
 Building
 ========
-Ensure you have GCC or LLVM Clang installed.
-From the project folder run `./scripts/build_gcc.sh` or `./scripts/build_clang.sh` to build with whichever compiler you prefer, do not cd into the scripts folder to run them.
+Ensure you have GCC installed.
+From the project folder run `./scripts/build.sh`, do not cd into the scripts folder.
 
 Running
 =======
