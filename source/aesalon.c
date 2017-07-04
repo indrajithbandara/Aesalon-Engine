@@ -25,6 +25,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <unistd.h>
+#include <pthread.h>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <AL/al.h>
