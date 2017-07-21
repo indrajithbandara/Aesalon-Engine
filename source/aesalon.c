@@ -31,38 +31,20 @@
 #include <AL/al.h>
 #include <AL/alc.h>
 
-#include "../sandford_libs/libwav.c"
-#include "structs.c"
+#include "../sfdlibs/files/filetypes/sfd_libwav.c"
+#include "asln_structs.c"
 
 ASLN_STATE  *asln_state;
 ASLN_CONFIG *asln_config;
 ASLN_AUDIO  *asln_audio;
 
-#include "input.c"
-#include "config.c"
-#include "graphics.c"
-#include "audio.c"
+#include "asln_input.c"
+#include "asln_config.c"
+#include "asln_graphics.c"
+#include "asln_audio.c"
 
 void asln_shutdown() {
-    if (asln_audio != NULL) {
-        if (asln_audio->context != NULL) {
-            alcMakeContextCurrent(NULL);
-            alcDestroyContext(asln_audio->context);
-        }
-        if (asln_audio->device != NULL)
-            alcCloseDevice(asln_audio->device);
-        free(asln_audio);
-    }
-
-    if (asln_state != NULL) {
-        if (asln_state->window != NULL)
-            glfwDestroyWindow(asln_state->window);
-        free(asln_state);
-    }
-
-    if (asln_config != NULL)
-        free(asln_config);
-
+    asln_audio_cleanup();
     puts("\nExiting");
     glfwTerminate();
 }

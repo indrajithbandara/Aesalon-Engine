@@ -21,6 +21,7 @@
 int asln_audio_init(void);
 void asln_audio_play(WAV*, ALuint);
 void asln_audio_self_test(void);
+void asln_audio_cleanup(void);
 
 int asln_audio_init() {
     puts("Initialising Audio...");
@@ -41,11 +42,11 @@ int asln_audio_init() {
         puts("Success");
         asln_audio_self_test();
         puts("  Opening Main Music File...");
-        wav = import_wav("sound/menu_theme.wav");
-        if (wav != NULL) {
+        wav = sfd_files_wav_load("sound/menu_theme.wav");
+        if (wav) {
             puts("  Playing Main Music...");
             asln_audio_play(wav, 1);
-            free_wav(wav);
+            sfd_files_wav_free(wav);
         } else
             puts("  Failed to Load Menu Music");
     } else
@@ -65,12 +66,33 @@ void asln_audio_play(WAV *wav, ALuint loop) {
 void asln_audio_self_test() {
     WAV *wav;
     printf("  Performing Audio Test... ");
-    wav = import_wav("sound/test.wav");
-    if (wav != NULL) {
+    wav = sfd_files_wav_load("sound/test.wav");
+    if (wav) {
         asln_audio_play(wav, 0);
-        free_wav(wav);
+        sfd_files_wav_free(wav);
         printf("%s\n", alGetString(alGetError()));
     } else
         puts("Failed");
     sleep(1);
+}
+
+void asln_audio_cleanup() {
+    if (asln_audio) {
+        if (asln_audio->context) {
+            alcMakeContextCurrent(NULL);
+            alcDestroyContext(asln_audio->context);
+        }
+        if (asln_audio->device)
+            alcCloseDevice(asln_audio->device);
+        free(asln_audio);
+    }
+
+    if (asln_state) {
+        if (asln_state->window)
+            glfwDestroyWindow(asln_state->window);
+        free(asln_state);
+    }
+
+    if (asln_config)
+        free(asln_config);
 }

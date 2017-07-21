@@ -35,7 +35,7 @@ int asln_config_load() {
     asln_config->vsync             = 1;
 
     puts("Opening Config File...");
-    if (((config = fopen("aesalon.cfg", "r")) != NULL) || ((config = fopen("~/aesalon.cfg", "r")) != NULL)) {
+    if ((config = fopen("aesalon.cfg", "r")) || (config = fopen("~/aesalon.cfg", "r"))) {
         int c, i = 0;
         char *buffer = malloc(asln_config->max_line_length);
         puts("Reading Values...");
